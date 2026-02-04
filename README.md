@@ -17,3 +17,8 @@ uv run convert.py INPUT OUTPUT
 ```
 
 will install dependencies to a clean virtual environment as required and run the format converter.
+
+`uv run euphonic-dispersion /path/to/phonopy.yaml` can be compared with `uv run euphonic-dispersion /path/to/euphonic/fc.json`
+to validate that the resulting data matches the built-in Phonopy loader.
+
+(NAC corrections are currently omitted for simplicity.)

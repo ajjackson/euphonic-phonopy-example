@@ -32,9 +32,12 @@ def get_phonopy(phonopy_yaml: Path) -> phonopy.Phonopy:
     if re_match:
         seedname = re_match.group("seedname")
         fc_file = phonopy_yaml.parent / f"{seedname}-force_constants.hdf5"
-        if not fc_file.exists():
-            fc_file = None
+    elif phonopy_yaml.name == "phonopy.yaml":
+        fc_file = phonopy_yaml.parent / "force_constants.hdf5"
     else:
+        fc_file = None
+
+    if fc_file is not None and not fc_file.exists():
         fc_file = None
 
     phonon = phonopy.load(
